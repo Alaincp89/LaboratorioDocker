@@ -1,24 +1,16 @@
-# Usar una imagen base oficial de Node.js
 FROM node:18
 
-RUN npm i -g nodemon
+RUN npm i -g nodemon@2.0.22
 
-RUN mkdir -p /home/app
-
-# Crear y establecer el directorio de trabajo
 WORKDIR /home/app
 
-# Copiar package.json y package-lock.json
 COPY package*.json ./
 
-# Instalar las dependencias
 RUN npm install
 
-# Copiar el resto de la aplicación
 COPY . .
 
-# Exponer el puerto que utilizará la aplicación
 EXPOSE 3000
 
-# Comando para ejecutar la aplicación
-CMD ["node", "index.js"]
+CMD ["nodemon", "index.js"]
+

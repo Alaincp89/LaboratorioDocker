@@ -62,6 +62,7 @@ app.get('/encuestas', async (_req, res) => {
 })
 
 app.get('/', async (_req, res) => {
+  console.log('listando... encuesta..')
   try {
     const encuestas = await Encuesta.find(); 
     res.json(encuestas); 
